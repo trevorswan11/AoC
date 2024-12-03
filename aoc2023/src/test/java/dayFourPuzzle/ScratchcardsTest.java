@@ -11,7 +11,8 @@ public class ScratchcardsTest {
 
 	// Helper method to get puzzle from path
 	private int[][] getPuzzle() throws IOException {
-		return Scratchcards.puzzle(Path.getPuzzle("dayFourPuzzle.txt"));
+		this.puzzle = Scratchcards.puzzle(Path.getPathForTest("dayFourPuzzle.txt"));
+		return puzzle;
 	}
 
 	// Test the first part of the challenge

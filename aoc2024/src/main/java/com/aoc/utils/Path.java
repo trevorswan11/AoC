@@ -1,27 +1,60 @@
 package com.aoc.utils;
 
+import java.nio.file.Paths;
+
 public class Path {
-    private static String root = "C:/Users/Trevor/OneDrive/Documents/AdventOfCode/";
-    private static String puzzles = root + "aoc2024/Puzzle Text Files/";
+    private static String year = "aoc2024";
+    private static String location = "Puzzle Text Files";
+    public String puzzleName;
 
     /**
-     * This method returns the full path to a file in root:
-     * {@code C:/Users/Trevor/OneDrive/Documents/AdventOfCode/}
+     * Sets the puzzle name
      * 
-     * @param path The path to the file relative to root\
-     * @return The full path as a String
+     * @param name The name of the Puzzle Text File
      */
-    public static String get(String path) {
-        return root + path;
+    public Path(String name) {
+        this.puzzleName = name;
     }
 
     /**
-     * This method returns the full path to a file in puzzles:
-     * {@code C:/Users/Trevor/OneDrive/Documents/AdventOfCode/aoc2024/Puzzle Text Files/}
-     * @param path The path to the file relative to the puzzle folder
-     * @return The full path as a String
+     * Returns the path of the puzzle file.
+     * 
+     * @return The full path of the puzzle file as a String
      */
-    public static String getPuzzle(String path) {
-        return puzzles + path;
+    public String getPath() {
+        java.nio.file.Path path = Paths.get(year, location, puzzleName); 
+        return path.toAbsolutePath().toString();
+    }
+
+    /**
+     * Returns the path of the puzzle file.
+     * 
+     * @return The full path of the puzzle file as a String
+     */
+    public  String getPathForTest() {
+        java.nio.file.Path path = Paths.get(location, puzzleName); 
+        return path.toAbsolutePath().toString();
+    }
+
+    /**
+     * Returns the path of the puzzle file.
+     * 
+     * @param name The name of the Puzzle Text File
+     * @return The full path of the puzzle file as a String
+     */
+    public static String getPath(String name) {
+        java.nio.file.Path path = Paths.get(year, location, name); 
+        return path.toAbsolutePath().toString();
+    }
+
+    /**
+     * Returns the path of the puzzle file.
+     * 
+     * @param name The name of the Puzzle Text File
+     * @return The full path of the puzzle file as a String
+     */
+    public static String getPathForTest(String name) {
+        java.nio.file.Path path = Paths.get(location, name); 
+        return path.toAbsolutePath().toString();
     }
 }

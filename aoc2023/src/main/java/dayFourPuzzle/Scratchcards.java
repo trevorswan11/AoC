@@ -271,7 +271,7 @@ public class Scratchcards {
 
 	public static void main(String[] args) throws IOException {
 		// Extract the puzzle from the file path
-		int[][] puzzle = puzzle(Path.getPuzzle("dayFourPuzzle.txt"));
+		int[][] puzzle = puzzle(Path.getPath("dayFourPuzzle.txt"));
 
 		// Print the sum of the value of the cards
 		int solutionOne = cardSum(puzzle);

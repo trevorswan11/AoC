@@ -208,7 +208,7 @@ public class Trebuchet {
 	public static void main(String[] args) throws IOException {
 		// Import the Test file for the puzzle
 		String puzzle = Trebuchet
-				.puzzle(Path.getPuzzle("dayOnePuzzle.txt"));
+				.puzzle(Path.getPath("dayOnePuzzle.txt"));
 		// Print the solution to the first part of the puzzle
 		System.out.println("Part One Solution:");
 		int solution1 = Trebuchet.sumPartOne(puzzle);

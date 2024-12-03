@@ -11,7 +11,7 @@ public class TrebuchetTest {
 
 	// Helper method to get puzzle file
 	private String getPuzzle() throws IOException {
-		return Trebuchet.puzzle(Path.getPuzzle("dayOnePuzzle.txt"));
+		return Trebuchet.puzzle(Path.getPathForTest("dayOnePuzzle.txt"));
 	}
 
 	// Run the test for the first part
