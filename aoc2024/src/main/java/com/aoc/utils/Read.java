@@ -31,6 +31,7 @@ public class Read {
                 break;
             case STRING:
                 this.textString = read2STRING();
+                break;
             default:
                 throw new IllegalArgumentException("Store type is invalid.");
         }
