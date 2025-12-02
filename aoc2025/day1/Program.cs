@@ -10,7 +10,7 @@ public class Solution
         }
         catch (IOException e)
         {
-            Console.WriteLine($"Error reaing file: {e}");
+            Console.WriteLine($"Error reading file: {e}");
             Input = "";
         }
     }
