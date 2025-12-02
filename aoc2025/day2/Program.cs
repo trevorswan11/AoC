@@ -78,7 +78,7 @@ public class Solution
 
     public static void Main(string[] Args)
     {
-        Solution solution = new("input.txt");
+        Solution solution = new("input_2025-day2.txt");
         ulong result1 = solution.One();
         Console.WriteLine($"Part one result: {result1}");
         ulong result2 = solution.Two();

@@ -5,3 +5,6 @@
 target/
 obj/
 bin/
+
+input**
+.env

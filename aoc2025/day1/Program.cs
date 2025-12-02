@@ -88,7 +88,7 @@ public class Solution
 
     public static void Main(string[] Args)
     {
-        Solution solution = new("input.txt");
+        Solution solution = new("input_2025-day1.txt");
         int result1 = solution.One();
         Console.WriteLine($"Part one result: {result1}");
         int result2 = solution.Two();
