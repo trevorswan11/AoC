@@ -56,7 +56,7 @@ public class Solution
         {
             // The first digit must be the maximum in the first n-13 digits
             // Using equiv compare prioritizes the first occurrence of the max
-            var first_digit = values.Take(values.Length - 12)
+            var first_digit = values.Take(values.Length - 11)
                 .Aggregate((a, b) => (a.Value >= b.Value) ? a : b);
             bests[0] = first_digit;
 
@@ -64,39 +64,21 @@ public class Solution
             for (int i = 1; i < 12; i++)
             {
                 var last_best = bests[i - 1];
-                int required_remaining = 12 - i;
 
                 // The next digit is now in the remaining part of the line
-                // Using equiv compare necessary here to not consume too much
-                var next_best = values.Skip(last_best.Index + 1)
+                // We want to take in the window, but reserve enough since we need 12 bats
+                int reserve_amount = 12 - i - 1;
+                bests[i] = values.Skip(last_best.Index + 1)
+                    .SkipLast(reserve_amount)
                     .Aggregate((a, b) => (a.Value >= b.Value) ? a : b);
-                int actual_remaining = values.Length - next_best.Index;
-                Console.WriteLine($"{actual_remaining} of {required_remaining}");
-
-                // If we're going to run out of digits, we greedily consume
-                if (actual_remaining < required_remaining)
-                {
-                    var acceptable_best = values.Skip(last_best.Index + 1)
-                        .Take(next_best.Index + 1)
-                        .Aggregate((a, b) => (a.Value >= b.Value) ? a : b);
-                    bests[i] = acceptable_best;
-                    continue;
-                }
-
-                bests[i] = next_best;
             }
 
 
             // Use precomputed factors to create the resulting value
-            ulong value = 0;
             for (int i = 0; i < BestsFactors.Length; i++)
             {
-                value += (ulong)bests[i].Value * BestsFactors[i];
+                joltage += (ulong)bests[i].Value * BestsFactors[i];
             }
-
-            Console.WriteLine(value);
-
-            joltage += value;
         }
 
         return joltage;
@@ -104,8 +86,7 @@ public class Solution
 
     public static void Main(string[] Args)
     {
-        // Solution solution = new("input_2025-day3.txt");
-        Solution solution = new("input_test.txt");
+        Solution solution = new("input_2025-day3.txt");
         int result1 = solution.One();
         Console.WriteLine($"Part one result: {result1}");
         ulong result2 = solution.Two();
