@@ -13,7 +13,8 @@ public class Solution
     public Solution(string path)
     {
         string input = File.ReadAllText(path);
-        InputLines = input.Split('\n').Where(line => line.Length > 0).ToArray();
+        InputLines = input.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.None)
+            .Where(line => line.Length > 0).ToArray();
         InputValues = InputLines.Select(line => line.Select(c => c - '0').ToArray())
             .Select(vals => vals.Select((value, index) => new ValueIndexPair { Value = value, Index = index }).ToArray())
             .ToArray();
@@ -59,6 +60,7 @@ public class Solution
             var first_digit = values.Take(values.Length - 11)
                 .Aggregate((a, b) => (a.Value >= b.Value) ? a : b);
             bests[0] = first_digit;
+            joltage += (ulong)bests[0].Value * BestsFactors[0];
 
             // Grab the best 11 batteries remaining to pack
             for (int i = 1; i < 12; i++)
@@ -71,12 +73,6 @@ public class Solution
                 bests[i] = values.Skip(last_best.Index + 1)
                     .SkipLast(reserve_amount)
                     .Aggregate((a, b) => (a.Value >= b.Value) ? a : b);
-            }
-
-
-            // Use precomputed factors to create the resulting value
-            for (int i = 0; i < BestsFactors.Length; i++)
-            {
                 joltage += (ulong)bests[i].Value * BestsFactors[i];
             }
         }
