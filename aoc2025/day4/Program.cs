@@ -1,6 +1,6 @@
 public class Solution
 {
-    readonly int[][] directions = new[]
+    static readonly int[][] directions = new[]
     {
         new[] { 1, -1  },
         new[] {  1, 0  },
@@ -30,6 +30,28 @@ public class Solution
         TotalColumns = InputRolls[0].Length;
     }
 
+    private static bool IsAccessible(char[][] rolls, int row, int col)
+    {
+        if (rolls[row][col] != '@') return false;
+
+        int surrounding = 0;
+        foreach (var direction in directions)
+        {
+            int row_query = row + direction[0];
+            int column_query = col + direction[1];
+
+            bool invalid_row = row_query < 0 || row_query >= rolls.Length;
+            bool invalid_column = column_query < 0 || column_query >= rolls[0].Length;
+            if (invalid_row || invalid_column) continue;
+
+            if (rolls[row_query][column_query] == '@') surrounding += 1;
+
+            if (surrounding >= 4) return false;
+        }
+
+        return true;
+    }
+
     public int One()
     {
         int accessible = 0;
@@ -37,24 +59,7 @@ public class Solution
         {
             for (int column = 0; column < TotalColumns; column++)
             {
-                char query = InputRolls[row][column];
-                if (query != '@') continue;
-
-                int surrounding = 0;
-                foreach (var direction in directions)
-                {
-                    int row_query = row + direction[0];
-                    int column_query = column + direction[1];
-
-                    bool invalid_row = row_query < 0 || row_query >= TotalRows;
-                    bool invalid_column = column_query < 0 || column_query >= TotalColumns;
-                    if (invalid_row || invalid_column) continue;
-
-
-                    if (InputRolls[row_query][column_query] == '@') surrounding += 1;
-                }
-
-                if (surrounding < 4) accessible += 1;
+                if (IsAccessible(InputRolls, row, column)) accessible += 1;
             }
         }
 
@@ -79,24 +84,7 @@ public class Solution
             {
                 for (int column = 0; column < TotalColumns; column++)
                 {
-                    char query = iter_rolls[row][column];
-                    if (query != '@') continue;
-
-                    int surrounding = 0;
-                    foreach (var direction in directions)
-                    {
-                        int row_query = row + direction[0];
-                        int column_query = column + direction[1];
-
-                        bool invalid_row = row_query < 0 || row_query >= TotalRows;
-                        bool invalid_column = column_query < 0 || column_query >= TotalColumns;
-                        if (invalid_row || invalid_column) continue;
-
-
-                        if (iter_rolls[row_query][column_query] == '@') surrounding += 1;
-                    }
-
-                    if (surrounding < 4)
+                    if (IsAccessible(iter_rolls, row, column))
                     {
                         iter_accessible += 1;
                         modify_rolls[row][column] = 'x';
@@ -113,7 +101,6 @@ public class Solution
     public static void Main(string[] Args)
     {
         Solution solution = new("input_2025-day4.txt");
-        // Solution solution = new("input_test.txt");
         int result1 = solution.One();
         Console.WriteLine($"Part one result: {result1}");
         int result2 = solution.Two();
