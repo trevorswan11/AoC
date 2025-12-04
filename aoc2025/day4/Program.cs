@@ -69,9 +69,11 @@ public class Solution
     {
         // Modifications are done to this array on a rolling basis
         char[][] modify_rolls = new char[TotalRows][];
-        for (int i = 0; i < TotalRows; i++) modify_rolls[i] = new char[TotalColumns];
-        Array.Copy(InputRolls, modify_rolls, TotalRows);
-        for (int i = 0; i < TotalRows; i++) Array.Copy(InputRolls[i], modify_rolls[i], TotalColumns);
+        for (int i = 0; i < TotalRows; i++)
+        {
+            modify_rolls[i] = new char[TotalColumns];
+            Array.Copy(InputRolls[i], modify_rolls[i], TotalColumns);
+        }
 
         // Pre-allocate the iteration array which mirrors modify_rolls
         char[][] iter_rolls = new char[TotalRows][];
