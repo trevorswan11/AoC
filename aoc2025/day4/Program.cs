@@ -45,7 +45,6 @@ public class Solution
             if (invalid_row || invalid_column) continue;
 
             if (rolls[row_query][column_query] == '@') surrounding += 1;
-
             if (surrounding >= 4) return false;
         }
 
@@ -69,15 +68,23 @@ public class Solution
     public int Two()
     {
         // Modifications are done to this array on a rolling basis
-        char[][] modify_rolls = InputRolls.Select(arr => arr.ToArray()).ToArray();
+        char[][] modify_rolls = new char[TotalRows][];
+        for (int i = 0; i < TotalRows; i++) modify_rolls[i] = new char[TotalColumns];
+        Array.Copy(InputRolls, modify_rolls, TotalRows);
+        for (int i = 0; i < TotalRows; i++) Array.Copy(InputRolls[i], modify_rolls[i], TotalColumns);
+
+        // Pre-allocate the iteration array which mirrors modify_rolls
+        char[][] iter_rolls = new char[TotalRows][];
+        for (int i = 0; i < TotalRows; i++) iter_rolls[i] = new char[TotalColumns];
 
         int total_accessible = 0;
         int iter_accessible = 0;
 
         do
         {
-            // This array mirrors the modify rolls, but does not update removes
-            char[][] iter_rolls = modify_rolls.Select(arr => arr.ToArray()).ToArray();
+            // Performing array copies is faster than LINQ ops here
+            Array.Copy(modify_rolls, iter_rolls, TotalRows);
+            for (int i = 0; i < TotalRows; i++) Array.Copy(modify_rolls[i], iter_rolls[i], TotalColumns);
 
             iter_accessible = 0;
             for (int row = 0; row < TotalRows; row++)

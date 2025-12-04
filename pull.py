@@ -14,7 +14,7 @@ def env_cookie() -> str | None:
     if not dotenv.exists():
         print("Could not locate a .env file in the cwd")
         dotenv.touch()
-        dotenv.write_text('SESSION_COOKIE="<your token here>"\n')
+        _ = dotenv.write_text('SESSION_COOKIE="<your token here>"\n')
         print(
             "I've created a .env file for you with the required variable for you to set"
         )
@@ -58,7 +58,7 @@ def request_input(day: int, year: int, cookie: str) -> str | None:
 
 if __name__ == "__main__":
     args = sys.argv
-    args.pop(0)
+    _ = args.pop(0)
     if len(args) == 0:
         print("Usage: python pull.py <day> <year?>")
         exit(1)
@@ -93,4 +93,4 @@ if __name__ == "__main__":
         exit(1)
 
     with open(output, "+w") as f:
-        f.write(input)
+        _ = f.write(input)
