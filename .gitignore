@@ -6,6 +6,16 @@ target/
 obj/
 bin/
 
+.eslintcache
+.cache
+*.tsbuildinfo
+
+out
+dist
+*.tgz
+
+node_modules
+
 input**
 .env
 .DS_Store
