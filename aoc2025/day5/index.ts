@@ -65,24 +65,23 @@ function two(buckets: Array<Range>): number {
     let total_fresh = 0;
     buckets.sort((a: Range, b: Range) => a.lower - b.lower);
 
-    let max_so_far: number = -1;
+    let current_lower = buckets[0]!.lower;
+    let current_upper = buckets[0]!.upper;
+
     for (let bucket of buckets) {
-        let lower = bucket.lower;
-        let upper = bucket.upper;
-
-        // We want to advance to avoid double counting
-        if (lower < max_so_far) {
-            lower = max_so_far + 1;
-        }
-
-        if (upper >= max_so_far) {
-            max_so_far = upper;
+        if (bucket.lower > current_upper + 1) {
+            // disjoint interval: count previous one
+            total_fresh += current_upper - current_lower + 1;
+            current_lower = bucket.lower;
+            current_upper = bucket.upper;
         } else {
-            continue;
+            // overlapping or touching: extend
+            current_upper = Math.max(current_upper, bucket.upper);
         }
-
-        total_fresh += upper - lower + 1;
     }
+
+    // add last merged interval
+    total_fresh += current_upper - current_lower + 1;
 
     return total_fresh;
 }
