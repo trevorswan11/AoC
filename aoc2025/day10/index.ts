@@ -105,6 +105,20 @@ function one(machines: Array<Machine>): number {
     return sum_of_fewest;
 }
 
+// Brainstorming for part 2
+// Example: [.##.] (3) (1,3) (2) (2,3) (0,2) (0,1) {3,5,4,7}
+/*
+
+
+
+*/
+
+async function twoZ3(machines: Array<Machine>): Promise<number> {
+    let sum_of_fewest = 0;
+
+    return sum_of_fewest;
+}
+
 function two(machines: Array<Machine>): number {
     let sum_of_fewest = 0;
     return sum_of_fewest;
