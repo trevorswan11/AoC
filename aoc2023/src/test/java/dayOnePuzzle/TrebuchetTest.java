@@ -1,4 +1,4 @@
-package dayOnePuzzle; 
+package dayOnePuzzle;
 
 import org.junit.*;
 

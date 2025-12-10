@@ -9,7 +9,7 @@ public class Path {
 
     /**
      * Sets the puzzle name
-     * 
+     *
      * @param name The name of the Puzzle Text File
      */
     public Path(String name) {
@@ -18,43 +18,43 @@ public class Path {
 
     /**
      * Returns the path of the puzzle file.
-     * 
+     *
      * @return The full path of the puzzle file as a String
      */
     public String getPath() {
-        java.nio.file.Path path = Paths.get(year, location, puzzleName); 
+        java.nio.file.Path path = Paths.get(year, location, puzzleName);
         return path.toAbsolutePath().toString();
     }
 
     /**
      * Returns the path of the puzzle file.
-     * 
+     *
      * @return The full path of the puzzle file as a String
      */
     public  String getPathForTest() {
-        java.nio.file.Path path = Paths.get(location, puzzleName); 
+        java.nio.file.Path path = Paths.get(location, puzzleName);
         return path.toAbsolutePath().toString();
     }
 
     /**
      * Returns the path of the puzzle file.
-     * 
+     *
      * @param name The name of the Puzzle Text File
      * @return The full path of the puzzle file as a String
      */
     public static String getPath(String name) {
-        java.nio.file.Path path = Paths.get(year, location, name); 
+        java.nio.file.Path path = Paths.get(year, location, name);
         return path.toAbsolutePath().toString();
     }
 
     /**
      * Returns the path of the puzzle file.
-     * 
+     *
      * @param name The name of the Puzzle Text File
      * @return The full path of the puzzle file as a String
      */
     public static String getPathForTest(String name) {
-        java.nio.file.Path path = Paths.get(location, name); 
+        java.nio.file.Path path = Paths.get(location, name);
         return path.toAbsolutePath().toString();
     }
 }

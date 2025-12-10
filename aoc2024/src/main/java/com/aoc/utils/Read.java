@@ -17,7 +17,7 @@ public class Read {
 
     /**
      * Creates a new Read instance with a set path and return type.
-     * 
+     *
      * @param name The name of the Puzzle Text File
      * @param type The desired return type of the stored file's data
      * @throws IllegalArgumentException If the type enum is invalid
@@ -45,7 +45,7 @@ public class Read {
 
     /**
      * Creates a new Read instance with a set path and return type.
-     * 
+     *
      * @param name The name of the Puzzle Text File
      * @param type The desired return type of the stored file's data. For this constructor, the type must be numeric.
      * @param separator The regex expression to separate the numbers in the file
@@ -65,7 +65,7 @@ public class Read {
 
     /**
      * Returns the representation of the Text.
-     * 
+     *
      * @return The file representation as an object.
      * @apiNote The output should always be type-casted
      * @throws IllegalArgumentException If the type enum is invalid
@@ -81,13 +81,13 @@ public class Read {
             case STRING:
                 return textString;
             default:
-                throw new IllegalArgumentException("Store type is invalid.");      
+                throw new IllegalArgumentException("Store type is invalid.");
         }
     }
 
     /**
      * Reads the contents from the path and stores lines as nodes in a linked list.
-     * 
+     *
      * @return The head of a linked list with file lines in each node
      */
     private LinkedList<String> read2LL() {
@@ -105,7 +105,7 @@ public class Read {
 
     /**
      * Reads the contents from the path and stores lines as elements in an array.
-     * 
+     *
      * @return The array that is the file lines in each cell
      */
     private String[] read2StringARR() {
@@ -114,7 +114,7 @@ public class Read {
 
     /**
      * Reads the contents from the path and to a 2D int array
-     * 
+     *
      * @param separator The separator to use for the space between values
      * @return The int array with each line being an array and each element being a number
      * @apiNote This should only be used when the entire dataset is made up of ints
@@ -147,7 +147,7 @@ public class Read {
 
     /**
      * Reads the contents from the path and stores as a String.
-     * 
+     *
      * @return The String is formatted exactly as given
      */
     private String read2STRING() {

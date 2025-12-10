@@ -7,7 +7,7 @@ import com.aoc.utils.Path;
 public class Scratchcards {
 	/**
 	 * This helper method adds Zeros in front of any number that is single digit
-	 * 
+	 *
 	 * @param s The unformatted input String
 	 * @return A String with formatted zeros
 	 */
@@ -48,7 +48,7 @@ public class Scratchcards {
 	/**
 	 * This helper method counts the number of spaces to get the correct number of
 	 * two-digit numbers in the line of the input for this challenge
-	 * 
+	 *
 	 * @param line The current of the puzzle
 	 * @return An int indicating the number of elements (digits) in the String
 	 */
@@ -70,7 +70,7 @@ public class Scratchcards {
 
 	/**
 	 * This helper method determines how many winning numbers a card has
-	 * 
+	 *
 	 * @param card An int[] of the cards contents
 	 * @return An int value of the number of elements found before -1
 	 */
@@ -86,7 +86,7 @@ public class Scratchcards {
 
 	/**
 	 * This helper method determines how many actual numbers a card has
-	 * 
+	 *
 	 * @param card An int[] of the card's contents
 	 * @return An int value of the number of elements found after -1
 	 */
@@ -101,7 +101,7 @@ public class Scratchcards {
 	 * array. The formatting of this array is the winning numbers, then -1, then the
 	 * card numbers. There are 199 lines of cards in the puzzle, so this method only
 	 * works with this specific puzzle.
-	 * 
+	 *
 	 * @param path A String of the puzzle information formatted as given
 	 * @return a multidimensional integer array with each 'row' containing a card
 	 *         and each 'column' containing the next number in the card. The winning
@@ -201,7 +201,7 @@ public class Scratchcards {
 	 * This method determines the value of the card stored in a 1D array according
 	 * to the AoC guidelines. The -1 in the array separates the winning numbers (on
 	 * the left), with the card's contents (on the right)
-	 * 
+	 *
 	 * @param line An int[] value that represents the cards contents
 	 * @return The value of the card as an int. The first match sets the card's
 	 *         value to 1. Each subsequent match doubles the value of the card.
@@ -254,7 +254,7 @@ public class Scratchcards {
 	 * This method sums up al of the values for the cards in the input. It can
 	 * handle any size puzzle as long as it is formatted in a way where -1 separates
 	 * the winners on the left and contents on the right.
-	 * 
+	 *
 	 * @param array A 2D array with the rows being the individual cards
 	 * @return An int of the sum of the total points of the cards
 	 */

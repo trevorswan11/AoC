@@ -25,7 +25,7 @@ public class CeresSearch {
                 if (j + word.length() <= cols && grid[i].substring(j, j + word.length()).equals(word)) {
                     count++;
                 }
-                
+
                 // Check down (vertical)
                 if (i + word.length() <= rows) {
                     StringBuilder vertical = new StringBuilder();
@@ -63,7 +63,7 @@ public class CeresSearch {
                 if (j + word.length() <= cols && grid[i].substring(j, j + word.length()).equals(new StringBuilder(word).reverse().toString())) {
                     count++;
                 }
-                
+
                 if (i + word.length() <= rows) {
                     StringBuilder verticalReverse = new StringBuilder();
                     for (int k = 0; k < word.length(); k++) {
@@ -112,18 +112,18 @@ public class CeresSearch {
                 // Check if we can form an X shape in both directions (forwards and backwards)
                 if (i - 1 >= 0 && i + 1 < rows && j - 1 >= 0 && j + 1 < cols) {
                     // Check forwards MAS pattern
-                    if (grid[i].charAt(j) == 'M' && 
-                        grid[i - 1].charAt(j + 1) == 'A' && 
+                    if (grid[i].charAt(j) == 'M' &&
+                        grid[i - 1].charAt(j + 1) == 'A' &&
                         grid[i + 1].charAt(j - 1) == 'S' &&
-                        grid[i - 1].charAt(j) == 'M' && 
+                        grid[i - 1].charAt(j) == 'M' &&
                         grid[i + 1].charAt(j + 1) == 'S') {
                         count++;
                     }
                     // Check backwards MAS pattern
-                    if (grid[i].charAt(j) == 'S' && 
-                        grid[i - 1].charAt(j + 1) == 'A' && 
+                    if (grid[i].charAt(j) == 'S' &&
+                        grid[i - 1].charAt(j + 1) == 'A' &&
                         grid[i + 1].charAt(j - 1) == 'M' &&
-                        grid[i - 1].charAt(j) == 'S' && 
+                        grid[i - 1].charAt(j) == 'S' &&
                         grid[i + 1].charAt(j + 1) == 'M') {
                         count++;
                     }

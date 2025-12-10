@@ -1,18 +1,20 @@
-import re
 import os
+import re
 
-file_path = os.path.join('dayThreePuzzle.txt')
+file_path = os.path.join("dayThreePuzzle.txt")
+
 
 def part_one():
     pattern = r"mul\((\d{1,3}),(\d{1,3})\)"
     result = 0
 
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for line in file:
             matches = re.findall(pattern, line)
             total_sum = sum(int(x) * int(y) for x, y in matches)
             result += total_sum
     print(result)
+
 
 def part_two():
     enabled = True  # mul instructions are enabled by default
@@ -26,7 +28,7 @@ def part_two():
     # Combine the patterns to find all relevant parts (mul, do, don't)
     combined_pattern = f"({mul_pattern})|({do_pattern})|({dont_pattern})"
 
-    with open(file_path, 'r') as file:
+    with open(file_path, "r") as file:
         for memory in file:
             # Iterate through the memory string to match instructions
             i = 0
@@ -53,11 +55,12 @@ def part_two():
                         enabled = False
                         i += len(match.group(5))  # Move past the don't() instruction
                         continue
-                
+
                 # Move to the next character if no match is found
                 i += 1
 
         print(total_sum)
+
 
 part_one()
 part_two()

@@ -8,7 +8,7 @@ import com.aoc.utils.Path;
 public class Trebuchet {
 	/**
 	 * This method extracts the puzzle from and inputted path.
-	 * 
+	 *
 	 * @param path The system path of the AoC Puzzle
 	 * @return A string containing the formatted puzzle
 	 * @throws IOException Something went wrong when reading file
@@ -36,7 +36,7 @@ public class Trebuchet {
 
 	/**
 	 * The solution to the first part of AdventOfCode day 1
-	 * 
+	 *
 	 * @param puzzle The formatted String for the Puzzle
 	 * @return The sum of the digits as requested by the challenge
 	 * @throws IOException Something went wrong when reading the String
@@ -98,7 +98,7 @@ public class Trebuchet {
 	/**
 	 * This method Splits the String into its own lines and feeds each one into A
 	 * method to determine the calibration value. It sums continuously.
-	 * 
+	 *
 	 * @param puzzle The input puzzle as a String
 	 * @return The total calibration value as an int
 	 */
@@ -134,7 +134,7 @@ public class Trebuchet {
 	 * given string. It then
 	 * looks through the string and looks for the last real number in the string. It
 	 * returns theses values as a single int.
-	 * 
+	 *
 	 * @param s A single line string to examine for the above criteria
 	 * @return An int that cointains the combination for the puzzle line.
 	 */
