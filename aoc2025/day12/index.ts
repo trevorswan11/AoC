@@ -1,5 +1,5 @@
-// const input_path: string = "input_2025-day12.txt";
-const input_path: string = "input_test.txt";
+const input_path: string = "input_2025-day12.txt";
+// const input_path: string = "input_test.txt";
 
 async function readInputLines(path: string): Promise<Array<string>> {
     const input = await Bun.file(path).text();
@@ -110,7 +110,6 @@ function one(presents: Array<Present>, regions: Array<Region>): number {
     let possible_regions = 0;
     
     for (const region of regions) {
-        console.log(region.theory_area, region.max_area);
         // We can quickly rule out completely impossible scenarios
         if (region.theory_area > region.max_area) {
             continue;
